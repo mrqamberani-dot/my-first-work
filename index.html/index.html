@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ahmed Baloch Cricket Academy | U-14 Kharan</title>
+    <style>
+        /* CSS STYLES */
+        :root {
+            --primary-color: #0d5c2d; /* Cricket Green */
+            --secondary-color: #f4b41a; /* Gold/Yellow */
+            --dark-color: #1a1a1a;
+            --light-color: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 92, 45, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+            height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--white);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-bottom: 4px solid var(--primary-color);
+        }
+
+        .feature-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Schedule Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .schedule-table th {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Registration Form */
+        .form-section {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .contact-box h3 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Mobile Menu */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            nav ul li {
+                margin: 5px 10px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header / Navigation -->
+    <header>
+        <div class="logo">Ahmed Baloch Academy U-14</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#register">Register</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <h1>Ahmed Baloch Cricket Academy</h1>
+        <p>Empowering the Next Generation of Young Cricketers in Kharan. Specialized Training Exclusively for Under-14 Youth.</p>
+        <a href="#register" class="btn">Join Academy Today</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About the Academy</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>Welcome to <strong>Ahmed Baloch Cricket Academy for Under 14</strong>, Kharan's premier youth cricket development center. Founded with a vision to nurture young talent in Balochistan, our academy provides professional coaching, physical conditioning, and tactical learning for aspiring young players under the age of 14.</p>
+                <p>Under the guidance of experienced coaches, we focus on fundamental cricket skills, team discipline, sportsmanship, and mental toughness to prepare local talent for district, provincial, and national trials.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs / Features -->
+    <section id="programs" style="background-color: #eef2f0;">
+        <h2 class="section-title">Our U-14 Training Programs</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Batting Masterclass</h3>
+                <p>Technique development, stance improvement, shot selection, and facing fast vs spin bowling in net practice.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Bowling Fundamentals</h3>
+                <p>Specialized coaching for fast bowlers (run-up, action, seam position) and spin bowlers (flight, turn, control).</p>
+            </div>
+            <div class="feature-card">
+                <h3>Fielding & Fitness</h3>
+                <p>Agility drills, catching techniques, ground fielding, throwing accuracy, and stamina building for U-14 boys.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Match Practice</h3>
+                <p>Regular internal practice matches, scenario training, and local competitive matches in Kharan.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Schedule -->
+    <section id="schedule">
+        <h2 class="section-title">Weekly Schedule</h2>
+        <div style="overflow-x: auto;">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Timing</th>
+                        <th>Session Focus</th>
+                        <th>Age Group</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday - Wednesday</td>
+                        <td>4:00 PM - 6:30 PM</td>
+                        <td>Net Practice & Batting/Bowling Techniques</td>
+                        <td>Under-14</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>4:00 PM - 6:00 PM</td>
+                        <td>Fielding Drills & Physical Fitness</td>
+                        <td>Under-14</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>3:30 PM - 6:30 PM</td>
+                        <td>Internal Practice Match / Scenario Play</td>
+                        <td>Under-14</td>
+                    </tr>
+                    <tr>
+                        <td>Friday & Sunday</td>
+                        <td colspan="3" style="text-align: center; color: #888;">Rest Days / Maintenance</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register" class="form-section">
+        <h2 class="section-title">U-14 Player Registration</h2>
+        <form id="registrationForm" onsubmit="handleRegister(event)">
+            <div class="form-group">
+                <label for="studentName">Player's Full Name:</label>
+                <input type="text" id="studentName" placeholder="Enter player's name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="dob">Date of Birth (Must be Under 14):</label>
+                <input type="date" id="dob" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guardianName">Father's / Guardian's Name:</label>
+                <input type="text" id="guardianName" placeholder="Enter guardian's name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number (WhatsApp):</label>
+                <input type="tel" id="phone" placeholder="03XX-XXXXXXX" required>
+            </div>
+
+            <div class="form-group">
+                <label for="role">Primary Cricket Specialty:</label>
+                <select id="role" required>
+                    <option value="">Select Specialty</option>
+                    <option value="Batsman">Batsman</option>
+                    <option value="Fast Bowler">Fast Bowler</option>
+                    <option value="Spin Bowler">Spin Bowler</option>
+                    <option value="All-Rounder">All-Rounder</option>
+                    <option value="Wicket-Keeper">Wicket-Keeper</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address in Kharan:</label>
+                <textarea id="address" rows="3" placeholder="Area / Street Name, Kharan"></textarea>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Submit Registration</button>
+        </form>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <div class="contact-box">
+                <h3>Location</h3>
+                <p>Main Sports Complex Ground,<br>Kharan, Balochistan, Pakistan</p>
+            </div>
+            <div class="contact-box">
+                <h3>Contact Numbers</h3>
+                <p>Phone: +92 3XX XXXXXXX</p>
+                <p>WhatsApp: +92 3XX XXXXXXX</p>
+            </div>
+            <div class="contact-box">
+                <h3>Training Timings</h3>
+                <p>Monday – Thursday: 4:00 PM – 6:30 PM</p>
+                <p>Saturday: 3:30 PM – 6:30 PM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Ahmed Baloch Cricket Academy For Under 14 - Kharan. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript logic -->
+    <script>
+        function handleRegister(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('studentName').value;
+            const role = document.getElementById('role').value;
+
+            // Display success message
+            alert(`Thank you, ${name}! Your registration form for the role of ${role} has been submitted successfully to Ahmed Baloch Cricket Academy. We will contact you soon.`);
+            
+            // Reset form fields
+            document.getElementById('registrationForm').reset();
+        }
+    </script>
+</body>
+</html>
